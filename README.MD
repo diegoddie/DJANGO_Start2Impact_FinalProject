@@ -3,11 +3,10 @@ Hello and welcome to my final Start2Impact Blockchain Development Project. I enj
 
 I deployed the project with Railway at https://web-production-bbee.up.railway.app/
 
+Functionalities are explained in detail in the presentation attached to this repository.
 ## OVERVIEW 🌎
 Welcome to GreenStepBids, a Django project for an online auction application, allowing users to participate in auctions and place bids on eco-friendly and sustainable sneakers.
 At the conclusion of each auction, an automated process generates a JSON file containing comprehensive auction details, including the winning bidder's information. This JSON data is then hashed and securely transmitted to the Sepolia blockchain through a transaction.
-
-Functionalities are explained in detail in the presentation attached to this repository.
 
 ![Homepage](screenshots/auctions.png)
 
