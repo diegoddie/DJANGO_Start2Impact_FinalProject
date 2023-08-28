@@ -29,6 +29,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-b49e.up.railway.app/'
+]
 
 
 # Application definition
@@ -164,7 +167,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-CSRF_TRUSTED_ORIGINS = ['*']
 
 # Celery Configuration Options
 from celery.schedules import crontab
