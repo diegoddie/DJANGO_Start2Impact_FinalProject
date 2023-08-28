@@ -99,7 +99,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": 'redis://default:P5tR1bRsCnQrubewPVJk@containers-us-west-57.railway.app:7225',
+        "LOCATION": os.environ.get('REDIS_URL'),
         "TIMEOUT": None,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
@@ -173,8 +173,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Celery Configuration Options
 from celery.schedules import crontab
-CELERY_BROKER_URL = 'redis://default:P5tR1bRsCnQrubewPVJk@containers-us-west-57.railway.app:7225'
-CELERY_RESULT_BACKEND = 'redis://default:P5tR1bRsCnQrubewPVJk@containers-us-west-57.railway.app:7225'
+CELERY_BROKER_URL = os.environ.get('REDIS_URL')
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL')
 CELERY_TASK_TRACK_STARTED = True
 CELERY_IGNORE_RESULT = False
 CELERY_TASK_SERIALIZER = 'json'
