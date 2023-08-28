@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'greenstepbids.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRESQL_NAME'),
+        'USER': os.environ.get('POSTGRESQL_USER'),
+        'PASSWORD': os.environ.get('POSTGRESQL_PASSWORD'),
+        'HOST': os.environ.get('POSTGRESQL_HOST'),
+        'PORT': os.environ.get('POSTGRESQL_PORT'),
     }
 }
 
@@ -173,10 +177,9 @@ CELERY_BROKER_URL = os.environ.get('RAILWAY_REDIS_URL')
 CELERY_RESULT_BACKEND = os.environ.get('RAILWAY_REDIS_URL')
 CELERY_TASK_TRACK_STARTED = True
 CELERY_IGNORE_RESULT = False
-CELERY_TASK_SERIALIZER = 'pickle'
-CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_ACCEPT_CONTENT = ['pickle', 'json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
 CELERY_BEAT_SCHEDULE = {
     'set-final-price-and-winner': {
         'task': 'auction.tasks.set_winner_and_final_price',
