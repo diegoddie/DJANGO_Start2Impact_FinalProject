@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRESQL_NAME'),
         'USER': os.environ.get('POSTGRESQL_USER'),
         'PASSWORD': os.environ.get('POSTGRESQL_PASSWORD'),
-        'HOST': os.environ.get('POSTGRESQL_HOST'),
+        'HOST': 'containers-us-west-69.railway.app',
         'PORT': 7451
     }
 }
