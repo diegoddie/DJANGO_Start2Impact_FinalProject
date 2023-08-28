@@ -40,7 +40,7 @@ p.reset {
     margin-top: 0; /* Rimuovi il margine superiore */
 }
 
-.login form, .register form {
+.login form, .register form, .reset form {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
