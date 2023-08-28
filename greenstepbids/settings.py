@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
@@ -95,7 +95,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ.get('RAILWAY_REDIS_URL'),
+        "LOCATION": "redis://127.0.0.1:6379/1",
         "TIMEOUT": None,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
@@ -169,7 +169,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Celery Configuration Options
 from celery.schedules import crontab
-CELERY_BROKER_URL = os.environ.get('RAILWAY_REDIS_URL')
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/2"
 CELERY_RESULT_BACKEND = os.environ.get('RAILWAY_REDIS_URL')
 CELERY_TASK_TRACK_STARTED = True
 CELERY_IGNORE_RESULT = False
