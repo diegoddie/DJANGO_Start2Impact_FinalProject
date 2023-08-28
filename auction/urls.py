@@ -8,4 +8,4 @@ urlpatterns = [
     path('auctions/', views.AuctionListView.as_view(), name='auctions'),
     path('auctions/<int:pk>/', views.AuctionDetailView.as_view(), name='auction-detail'),
     path('profile/', views.user_profile, name='user-profile'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

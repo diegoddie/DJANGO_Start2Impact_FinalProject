@@ -2,6 +2,8 @@ from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 from . import views
 from .forms import LoginForm
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'accounts'
 
@@ -13,4 +15,4 @@ urlpatterns = [
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_sent.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_form.html',success_url=reverse_lazy('accounts:password_reset_complete')), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_done.html'), name='password_reset_complete'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
