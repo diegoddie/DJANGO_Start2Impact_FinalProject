@@ -35,7 +35,7 @@ The second worker handles auctions that have concluded but have not yet been bro
 It creates a JSON containing the auction data, hashes it, writes the transaction to the Sepolia blockchain and saves the tx hash to the database
 The third worker activates when it detects a new Ethereum transaction has been broadcasted. In this case, to manage memory efficiently, it proceeds to clear the Redis cache (remember, Auctions are stored in the SQLite DB and Bids are stored in Redis!)  for the corresponding auction, preventing unnecessary memory consumption.
 
-## Local Installation
+## LOCAL INSTALLATION
 1. Clone the repository: git clone <https://github.com/diegoddie/VotingDapp-Start2ImpactProject>
 2. Navigate to the project directory
 3. Create a virtual environment: ```python -m venv venv```
@@ -55,7 +55,7 @@ The third worker activates when it detects a new Ethereum transaction has been b
 8. Create a superuser: ```python manage.py createsuperuser```
 9. python manage.py runserver
 
-## Usage
+## USAGE
 - Access the admin interface at http://127.0.0.1:8000/admin/ using the superuser credentials created earlier.
 - Create shoes and auctions of eco-friendly sneakers, place bids, and monitor auctions in the user interface at http://127.0.0.1:8000/auctions
 
