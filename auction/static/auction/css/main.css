@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Oswald:wght@200;300;400;500;600;700&family=VT323&display=swap');
+:root {
+    --font-oswald: 'Oswald', sans-serif;
+    --font-vt23: 'VT323', monospace;
+    --font-gloria: 'Gloria Hallelujah', cursive;
+    --color-primary: #5B4B49;
+    --color-secondary: #DB93B0;
+    --color-tertiary: #F7BFB4;
+    --color-accent: #7DAF9C;
+    --color-highlight: #23967F;
+}
+
+body {
+    background-color: var(--color-secondary);
+    font-family: var(--font-oswald);
+    color: var(--color-primary);
+}
+
+/* NAVBAR */
+
+.navbar {
+    background-color: var(--color-highlight);
+    text-align: center;
+}
+
+span.slogan{
+    font-family: var(--font-gloria);
+    text-align: center;
+    color: var(--color-tertiary);
+    cursor: pointer;
+}
+
+a.logo{
+    font-family: var(--font-vt23);
+    font-size: 28px;
+    color: var(--color-tertiary);
+}
+
+a.user{
+    font-size: 28px;
+    color: var(--color-tertiary);
+}
+
+a.user:hover{
+    font-size: 28px;
+    color: var(--color-secondary);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px; 
+    align-items: center; 
+}
+
+.nav-btn-signup{
+    background-color: var(--color-primary);
+}
+
+.nav-btn-signup:hover{
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.nav-btn-login{
+    background-color: var(--color-tertiary);
+}
+
+.nav-btn-login:hover{
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.navbar .nav-item.dropdown {
+    list-style-type: none; 
+}
+
+.navbar .nav-item.dropdown > a {
+    padding-left: 0; 
+}
+
+.dropdown-menu {
+    background-color: var(--color-accent);
+    padding: 14px 0;
+}
+
+.dropdown-menu li{
+    margin-left: 10px;
+    margin-bottom: 3px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.dropdown-menu li:hover{
+    background-color: var(--color-primary);
+}
+
+.message-container {
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+/* HOMEPAGE */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 80px;
+}
+
+.title {
+    font-size: 78px;
+    margin-bottom: 40px;
+    font-family: var(--font-gloria);
+    color: var(--color-highlight)
+}
+
+.description {
+    font-size: 28px;
+    line-height: 38px;
+    padding-bottom: 10px;
+}
+
+.home_buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px; 
+    font-size: 18px; 
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-btn-signup{
+    background-color: var(--color-primary);
+}
+
+.home-btn-signup:hover{
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.home-btn-login{
+    background-color: var(--color-accent);
+}
+
+.home-btn-login:hover{
+    background-color: var(--color-highlight);
+    color: white;
+}
+
+/* AUCTIONS */
+.aucitons{
+    width: 100%;
+    height: auto;
+    padding: 25px 0;
+}
+
+.auctions h1{
+    margin: 35px 0;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auctions .filter-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0; 
+}
+
+.auctions .filter-buttons .filter-button {
+    background-color: pink;
+    border-radius: 5px;
+    padding: 15px 30px; 
+    margin: 0 10px; 
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s; 
+}
+
+.auctions .filter-buttons .filter-button:hover {
+    transform: scale(1.1); 
+}
+
+.auctions .box {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 35px 0;
+    padding: 25px 0;
+}
+
+@media (min-width: 576px) {
+    .auctions .box {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .auctions .box {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1281px) {
+    .auctions .box {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.auctions .box .card{
+    width: 290px;
+    height: 450px;
+    box-shadow: 0 0 8px var(--color-primary);
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-highlight));
+}
+
+.auctions .box .card .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auctions .box .card .image img{
+    width: 150px;
+    margin: 15px 0;
+    transition: 0.3s;
+}
+
+.auctions .box .card:hover .image img{
+    transform: scale(1.1);
+}
+
+.auctions .box .card .auction_text h2{
+    font-size: 28px;
+    margin-top: 5px;
+}
+
+.auctions .box .card .auction_text p{
+    line-height: 21px;
+    margin: 10px 0;
+    color: var(--color-primary);
+}
+
+.auctions .box .card .auction_text h5{
+    margin: 10px 0;
+}
+
+.auctions .box .card .auction_text .btn{
+    text-decoration: none;
+    padding: 10px 30px;
+    margin: 15px 0;
+    background: linear-gradient(to right, rgb(130, 209, 145), rgb(15, 216, 15));
+    color: white;
+}
+
+.auctions .box .card .auction_text .btn:hover{
+    transform: scale(1.1);
+}
+
+.auctions .box .card .auction_text .btn-disabled {
+    pointer-events: none; 
+    opacity: 0.6;
+    background: linear-gradient(to right, var(--color-tertiary), var(--color-secondary));
+}
+
+.auctions .box .card .auction_text .btn-ended {
+    text-decoration: none;
+    padding: 10px 30px;
+    margin: 15px 0;
+    background: rgb(168, 44, 44);
+    pointer-events: none; 
+    opacity: 0.8;
+    color: white;
+}
+
+/* AUCTIONS-DETAIL */
+.auction-detail .card{
+    background-color: var(--color-accent);
+}
+
+.auction-detail .card a{
+    font-weight: bold;
+}
+
+.auction-detail .card .countdown-box{
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.auction-detail .card a:hover{
+    transform: scale(1.1);
+}
+
+.auction-detail .card .row img{
+    margin-bottom: 20px;
+}
+
+.auction-detail .card .row .shoe-title h5{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.auction-detail .card .row .info p{
+    font-size: 18px;
+}
+
+.auction-detail .card .row .info p.description{
+    font-size: 22px;
+}
+
+.auction-detail .card .row .info span{
+    font-weight: bold;
+}
+
+.auction-detail .card .row .bid-form form {
+    font-weight: bold;
+    justify-content: start;
+}
+
+.auction-detail .card .row .bid-form button.submit-btn{
+    background-color: var(--color-secondary);
+}
+
+.auction-detail .card .row .bid-form button.submit-btn:hover{
+    transform: scale(1.1);
+}

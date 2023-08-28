@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container auction-detail mt-10 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="card border-4">
+            <div class="d-flex justify-content-between p-3">
+                <a href="{% url 'auctions' %}" class="text-decoration-none text-dark">
+                    <i class="fa-solid fa-arrow-left"></i> BACK
+                </a>
+                <div id="countdown-box-{{ auction.id }}" class="text-center countdown-box" data-end="{{ auction.end_date|date:'c' }}">
+                    <div class="spinner-border" role="status"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="images p-3">
+                        <div class="text-center p-5"> <img src="{{ auction.shoe.image.url }}" class="" alt="{{ auction.shoe.name }} Image" width="290"> </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4">
+                        <div class="shoe-title mb-3"> 
+                            <h5 class="text-uppercase">{{ auction.title }}</h5>
+                        </div>
+                        <div class="info mt-3">
+                            <p class="description">{{ auction.description }}</p>
+                            <p><span>ID:</span> {{auction.id}}</p>
+                            <p><span>STARTED:</span> {{ auction.start_date|date:"M d, Y H:i:s" }}</p>
+                            <p><span>DEADLINE:</span> {{ auction.end_date|date:"M d, Y H:i:s" }}</p>
+                            <p><span>INITIAL PRICE:</span> $ {{ auction.initial_price }}</p>
+                            <p><span>HIGHEST BID:</span>
+                                {% if highest_bid %}
+                                    $ {{ highest_bid }}
+                                    {% if is_highest_bidder %}
+                                        (you)
+                                    {% endif %}
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="bid-form mt-3 d-flex flex-column">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ bid_form.amount.label_tag }} {{ bid_form.amount }}
+                                <button type="submit" class="submit-btn">MAKE A BID</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    const countdownBox = document.getElementById('countdown-box-{{ auction.id }}');
+    const endTimestamp = new Date(countdownBox.getAttribute('data-end')).getTime();
+    const bidForm = document.querySelector('.bid-form form');
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diffToEnd = endTimestamp - now;
+
+        if (diffToEnd > 0) {
+            const days = Math.floor(diffToEnd / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffToEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffToEnd % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffToEnd % (1000 * 60)) / 1000);
+            countdownBox.innerHTML = `- ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            bidForm.classList.remove('d-none');
+        } else {
+            countdownBox.innerHTML = 'Auction ended';
+
+            bidForm.classList.add('d-none');
+        }
+    }, 1000);
+</script>
+
+{% endblock %}

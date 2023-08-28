@@ -1,0 +1,1 @@
+web: gunicorn 'greenstepbids.wsgi' --log-file - 

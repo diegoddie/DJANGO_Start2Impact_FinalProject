@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="left-section">
+        <h1 class="title">Welcome to GreenStepBids!</h1>
+        <p class="description">Our mission is to promote sustainable fashion by connecting sneakerheads with eco-friendly footwear auctions.<br/><br/>At the end of each auction, a JSON file containing all auction details and winner references will be hashed and broadcasted on the Ethereum blockchain (Ropsten) for transparency, security and immutability.</p>
+        <div class="home_buttons">
+            {% if user.is_authenticated %}
+            <a href="{% url 'auctions' %}" class="btn home-btn-signup">GO TO AUCTIONS</a>
+            {% else %}
+            <a href="{% url 'accounts:sign-up' %}" class="btn home-btn-signup">SIGN UP</a>
+            <a href="{% url 'accounts:login' %}" class="btn home-btn-login">LOGIN</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="right-section">
+        <img src="{% static 'auction/images/sneaker.png' %}" alt="Sneaker Image">
+    </div>
+</div>
+
+
+{% endblock %}

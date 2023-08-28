@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="auctions">
+        <h1 class="text-center">Auctions</h1>
+        <div class="filter-buttons">
+            <button class="filter-button" data-filter="all">ALL AUCTIONS</button>
+            <button class="filter-button" data-filter="inprogress">IN PROGRESS</button>
+            <button class="filter-button" data-filter="upcoming">UPCOMING</button>
+            <button class="filter-button" data-filter="expired">EXPIRED</button>
+        </div>
+        <div class="box">
+            {% for auction in object_list %}
+                <div class="card" data-start="{{ auction.start_date|date:'c' }}" data-end="{{ auction.end_date|date:'c' }}">
+                    <div class="image">
+                        <img src="{{ auction.shoe.image.url }}" class="" alt="{{ auction.shoe.name }} Image">
+                    </div>
+                    <div class="auction_text">
+                        <h2 class="card-title">{{ auction.shoe.name }}</h2>
+                        {% if auction.ethereum_tx %}
+                        <p class="card-text">
+                            Ethereum Transaction: <a href="https://sepolia.etherscan.io/tx/{{ auction.ethereum_tx }}" style="text-decoration: none;">0x{{ auction.ethereum_tx|slice:'2:12' }}...{{ auction.ethereum_tx|slice:'-6:' }}</a>
+                        </p>
+                        {% else %}
+                            <p class="card-text">
+                                {{ auction.description }} 
+                            </p> 
+                        {% endif %}
+                        {% if auction.is_expired %}
+                            {% if auction.final_price %}
+                                <h5>Final Price: $ {{ auction.final_price }}</h5>
+                            {% else %}
+                                <h5>Not Sold</h5>
+                            {% endif %}
+                        {% elif not auction.is_expired and auction.highest_bid %}
+                                <h5>Highest Bid: $ {{ auction.highest_bid }} 
+                                    {% if auction.is_highest_bidder %}
+                                        (you)
+                                    {% endif %}
+                                </h5>
+                        {% else %}
+                            <h5>Starting from: $ {{ auction.initial_price }}</h5>
+                        {% endif %}
+                        <div id="countdown-box-{{ auction.id }}">
+                            <div class="spinner-border mt-4" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    const countdownBox{{ auction.id }} = document.getElementById('countdown-box-{{ auction.id }}');
+                    const eventDate{{ auction.id }} = new Date("{{ auction.start_date|date:'c' }}").getTime();
+                    const endDate{{ auction.id }} = new Date("{{ auction.end_date|date:'c' }}").getTime();
+
+                    setInterval(() => {
+                        const now = new Date().getTime();
+                        const diffToStart = eventDate{{ auction.id }} - now;
+                        const diffToEnd = endDate{{ auction.id }} - now;
+
+                        const countdownButton{{ auction.id }} = document.createElement('a');
+                        countdownButton{{ auction.id }}.href = "{% url 'auction-detail' auction.pk %}";
+                        countdownButton{{ auction.id }}.classList.add('btn', 'countdown-button');
+                        
+                        if (diffToStart <= 0 && diffToEnd > 0) {
+                            countdownButton{{ auction.id }}.innerHTML = "VIEW AUCTION";
+                        } else if (diffToEnd <= 0) {
+                            countdownButton{{ auction.id }}.innerHTML = "AUCTION ENDED";
+                            countdownButton{{ auction.id }}.classList.add('btn-ended');
+                        } else {
+                            const days = Math.floor(diffToStart / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((diffToStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const minutes = Math.floor((diffToStart % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((diffToStart % (1000 * 60)) / 1000);
+                            countdownButton{{ auction.id }}.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                            countdownButton{{ auction.id }}.classList.add('btn-disabled'); 
+                        }
+
+                        countdownBox{{ auction.id }}.innerHTML = '';
+                        countdownBox{{ auction.id }}.appendChild(countdownButton{{ auction.id }});
+                    }, 1000);
+                </script>
+            {% endfor %}
+        </div>
+    </div>
+    <script type="text/javascript">
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const cards = document.querySelectorAll('.card');
+    
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                const now = new Date().getTime();
+    
+                cards.forEach(card => {
+                    const startTimestamp = new Date(card.getAttribute('data-start')).getTime();
+                    const endTimestamp = new Date(card.getAttribute('data-end')).getTime();
+                    const isWinner = card.querySelector('.card-title').getAttribute('data-is-winner');
+    
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else if (filter === 'inprogress' && startTimestamp <= now && endTimestamp >= now) {
+                        card.style.display = 'block';
+                    } else if (filter === 'upcoming' && startTimestamp > now) {
+                        card.style.display = 'block';
+                    } else if (filter === 'expired' && endTimestamp < now) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

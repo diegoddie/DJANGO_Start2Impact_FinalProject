@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom border-body sticky-top" data-bs-theme="dark">
+    <div class="container-md">
+        <a class="navbar-brand logo" href="{% url 'home' %}">
+            GREEN STEP BIDS💚👟
+        </a>
+        <span class="navbar-brand slogan">
+            Bid Green, Leave a Sneaker Footprint
+        </span>
+        {% if user.is_authenticated and request.user.is_authenticated %}
+        
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle user" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    👋🏻 Hi, {{ user.username }}!
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'auctions' %}" class="navbar-brand">Home</a></li>
+                    <li><a href="{% url 'user-profile' %}" class="navbar-brand">My Auctions</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" class="navbar-brand">Logout</a></li>
+                </ul>
+            </li>
+            
+        {% else %}
+                <div class="button-group">
+                    <a href="{% url 'accounts:sign-up' %}" class="btn nav-btn-signup">SIGN UP</a>
+                    <a href="{% url 'accounts:login' %}" class="btn nav-btn-login">LOGIN</a>
+                </div>
+        {% endif %}
+        
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Contenuto specifico della pagina di registrazione -->
+<div class="login">
+    <h2 class="login">Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Accedi</button>
+        <p class="forgot_password">Forgot password? <a href="{% url 'accounts:reset_password' %}">Reset Password</a></p>
+
+    </form>
+</div>
+
+{% endblock %}

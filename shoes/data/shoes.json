@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Veja Condor",
+      "description": "This shoewear startup is dedicated to ethical shoe-making. Their running shoe, the Condor, sports colorful designs, and is made with 53 percent recycled plastic and natural materials like rubber, organic cotton and rice waste.",
+      "image":"shoes/shoes1.png",
+      "color": "Grey/Black/"
+    },
+    {
+      "name": "TOMS Earthwise",
+      "description": "TOMS is best known for its one-for-one charitable business model, partnering with nonprofits to give children in need new shoes. Their new collection, Earthwise, is made from vegan and environmentally-friendly materials, including hemp, cotton and recycled polyester.",
+      "image":"shoes/shoes2.png",
+      "color": "Lilac"
+    },
+    {
+      "name": "Allbirds Wool Runners",
+      "description": "This popular shoe is made with wool from merino sheep, as well as other materials like recycled bottles, castor bean oil and recycled cardboard. According to its website, Allbirds production uses 60 percent less energy than synthetic shoes. They are certified by the Forest Stewardship Council, an independent nonprofit that rates products for sustainability. Allbirds has also committed to becoming carbon-neutral, meaning that for every ton of carbon the company emits, they will pay to “take” a ton of carbon out of the atmosphere by purchasing credits from third-party emission reduction products, known as “carbon offsets.",
+      "image":"shoes/shoes3.png",
+      "color": "black"
+    },
+    {
+      "name": "Nothing New Low Top",
+      "description": "The environmental shoewear brand was founded just last year, dedicated to making stylish, sustainable sneakers. As the name suggests, Nothing New shoes are only created with recycled materials, including recycled plastic, cotton, fishing nets, rubber and cork.",
+      "image":"shoes/shoes4.png",
+      "color": "White"
+    },
+    {
+      "name": "Adidas X Parley",
+      "description": "The sportswear giant partnered with environmental organization Parley for the Oceans in 2015, and has committed to transition fully to recycled plastic by 2024. According to Adidas’ website, the company has produced 11 million pairs of shoes using upcycled plastic waste, keeping 2810 tons of plastic out of the ocean. This model is knit with rubber soles and is designed for long-distance trail running.",
+      "image":"shoes/shoes5.png",
+      "color": "Olive/Black/Orbit Green"
+    },
+    {
+      "name": "Cariuma",
+      "description": "For some of the most sustainable and stylish sneakers on the planet, Cariuma is it. The brand’s materials include GOTS-certified organic cotton, bamboo, recycled PET, and Leather Working Group-certified leather and suede, dyed with low-impact inks. Hands down the shoe of choice if you’re team sneakers-without-socks. We love that Cariuma sneakers are comfy and breathable (so no funky feet in our experience); they’re well worth the purchase especially if you look out for sales.",
+      "image":"shoes/shoes6.png",
+      "color": "Camo"
+    }
+  ]

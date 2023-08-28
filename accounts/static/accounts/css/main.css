@@ -1,0 +1,78 @@
+.register{
+    padding-top: 40px;
+}
+
+.login {
+    padding-top: 40px;
+}
+
+.reset{
+    padding-top: 10px;
+}
+
+.email-sent{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+h2.register{
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2.login{
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2.reset{
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 10px; /* Riduci il margine inferiore */
+}
+
+p.reset {
+    color: var(--color-primary);
+    text-align: center;
+    margin-top: 0; /* Rimuovi il margine superiore */
+}
+
+.login form, .register form, .reset form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: var(--color-accent);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login button[type="submit"], .register button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-highlight);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.forgot_password{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
