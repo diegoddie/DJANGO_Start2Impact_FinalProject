@@ -30,7 +30,7 @@ DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-b49e.up.railway.app/'
+    'https://web-production-b49e.up.railway.app',
 ]
 
 
